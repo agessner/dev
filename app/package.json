@@ -1,0 +1,19 @@
+{
+  "name": "devanalyzer",
+  "version": "1.0.0",
+  "description": "That's a software built for analyzing web developer skills",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Airton Gessner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agessner/devaliator/issues"
+  },
+  "homepage": "https://github.com/agessner/devaliator#readme",
+  "dependencies": {
+    "hapi": "^16.1.0",
+    "joi": "^10.3.0"
+  }
+}
