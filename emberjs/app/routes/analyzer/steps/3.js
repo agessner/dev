@@ -16,13 +16,25 @@ export default Ember.Route.extend({
             
             this.controller.set('isProcessing', true);    
 
-            var record = this.controller.get('model');
-            
+            let record = this.controller.get('model');
+            let errror = false;
+
             this.controller.get('abilities').forEach(ability => {
+
+                if (parseInt(ability.value) && (
+                    parseInt(ability.value) > 10 || parseInt(ability.value) < 0)) {
+                    errror=true;
+                    return Ember.get(this, 'flashMessages').danger(`Valor incorreto para a habilidade ${ability.name}. Defina apenas valores entre 0 e 10.`);
+                }
+
                 record.set(ability.id, parseInt(ability.value) || null);
+                
             });
 
-            console.log(record);
+            if (errror) {
+                this.controller.set('isProcessing', false);   
+                return;
+            }
             
             Ember.$.ajax({
                 url 		: config.API_HOST+'/tests',

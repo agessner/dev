@@ -6,11 +6,14 @@ export default Ember.Route.extend({
     actions: {
 
         start() {
-            
-            this.transitionTo('analyzer.steps.2');
-
+            this._start();
         }
 
+    },
+
+    _start() {
+        this.transitionTo('analyzer.steps.2');
     }
+
 
 });

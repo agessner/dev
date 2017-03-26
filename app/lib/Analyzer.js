@@ -25,9 +25,26 @@ class Analyzer {
         return this.result.ios >= 7 && this.result.android >= 7;
     }
 
-    test(callback) {
+    sendEmail(habilities, callback) {
         
         const mailer = new Mailer(config.email.sender, this.result.userEmail, `Obrigado por se candidatar ${this.result.userName}!`);
+
+        mailer.readTemplate('response', (err, html) => {
+            
+            if (err) {
+                return callback(err);
+            }
+            
+            return async.each(habilities, (hability, eachCallback) => {
+                return mailer.send(html, hability, eachCallback);
+            }, err => {
+                return callback(err, this.result);
+            });
+            
+        });
+    }
+
+    test(callback) {
 
         let habilities = [];
         if (this.isFrontEnd()) {
@@ -44,19 +61,7 @@ class Analyzer {
             habilities.push(undefined);
         }
 
-        mailer.readTemplate('response', (err, html) => {
-            
-            if (err) {
-                return callback(err);
-            }
-            
-            return async.each(habilities, (hability, eachCallback) => {
-                return mailer.send(html, hability, eachCallback);
-            }, err => {
-                return callback(err, this.result);
-            });
-            
-        });
+        this.sendEmail(habilities, callback);
     }
 }
 

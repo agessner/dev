@@ -4,7 +4,7 @@
   "description": "That's a software built for analyzing web developer skills",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test istanbul cover _mocha -- -t 30000 -u exports -R spec test/**/*"
   },
   "author": "Airton Gessner",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "hapi": "^16.1.0",
     "joi": "^10.3.0",
     "nodemailer": "^3.1.8",
+    "sinon": "^2.1.0",
     "xoauth2": "^1.2.0"
   }
 }

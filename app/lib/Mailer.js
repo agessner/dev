@@ -43,7 +43,7 @@ class Mailer {
             result:result, 
             imageUrl:`${__dirname}/../emailTemplates/images`
         });
-
+        
         this.transporter.sendMail(this.mailOptions, (err, response) => {
             if (err) {
                 console.error('Error ', err);
