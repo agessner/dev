@@ -6,5 +6,8 @@ module.exports = {
         host: 'localhost',
         routes: { cors: true }
     },
-    routes: './routes/'
+    routes: './routes/',
+    email: {
+        sender: 'ajgessner@hotmail.com'
+    }
 };

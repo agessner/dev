@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+
 	this.route('analyzer', function () {
 		this.route('steps', function() {
 			this.route('1');

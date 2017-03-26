@@ -8,15 +8,22 @@
                 {{#each abilities as |ability|}}
                     <div class="card {{ability.direction}}">
                         <img src={{ability.source}}  alt={{ability.name}}><br/>
-                        {{input  type="number" min="0" max="10"}}
+                        {{input  type="number" value=ability.value min="0" max="10" }}
                     </div>
                 {{/each}}
             </div>
         </div>
     </div>
     <div class="button foward">
-        <button {{action "save"}} type="button" class="btn btn-success btn-lg" aria-label="Left Align">
-            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar
-        </button>
+        
+        {{#if isProcessing}}
+            <button disabled type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+                <span class="glyphicon glyphicon-repeat gly-spin" aria-hidden="true"></span>
+            </button>
+        {{else}}
+            <button {{action "save"}} type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+                <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar
+            </button>
+        {{/if}}
     </div>
 </form>

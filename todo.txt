@@ -8,4 +8,4 @@ TO-DO
 * Criar testes unitários da API e do FRONT
 * Criar um README no github com o que precisa ser instalado
 ** Node
-** Ember
+** Ember - Responsivo

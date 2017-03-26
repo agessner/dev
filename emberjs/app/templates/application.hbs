@@ -1,13 +1,21 @@
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header logo">
 	  		<a class="navbar-brand no-padding" href="#"><img src="/assets/images/logo.png"  alt="Logo"></a>
 		</div>
 	</div>
 </nav>
+<div class="messages">
+	{{#each flashMessages.queue as |flash|}}
+		{{flash-message flash=flash}}
+	{{/each}}
+</div>
 <div class="container text-center">
 	{{outlet}}
 </div>
-<div class="footer">
-	Todas
+<div class="footer text-right">
+	<span>Desenvolvido por Airton Gessner</span>
+	<a href="https://github.com/agessner" target="_blank"><img src="/assets/images/1490557371__github.png"  alt="GitHub"></a>
+	<a href="https://www.linkedin.com/in/airtongessner/" target="_blank"><img src="/assets/images/1490557375__linked_in.png"  alt="LinkedIn"></a>
+	<a href="mailto:ajgessner@hotmail.com" target="_blank"><img src="/assets/images/1490557377__email.png"  alt="Email"></a>
 </div>

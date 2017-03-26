@@ -1,24 +1,28 @@
-<div>
-    <div class="box personal-inf"> 
-        <span class="inf">Antes de começar precisamos de algumas informações</span>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
-                    {{input class="form-control" value=model.userName required=true placeholder="Nome completo" aria-describedby="basic-addon1"}}
+<form class="form-horizontal" {{action "foward" on="submit"}}>
+    <div>
+        <div class="box personal-inf"> 
+            <span class="inf">Antes de começar precisamos de algumas informações</span>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
+                        {{input class="form-control" value=model.userName required=true placeholder="Nome completo" aria-describedby="basic-addon1"}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row top-buffer">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <span class="input-group-addon glyphicon glyphicon-envelope" id="basic-addon2"></span>
-                    {{input class="form-control" value=model.userEmail placeholder="example@example.com" aria-describedby="basic-addon2"}}
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-envelope" id="basic-addon2"></span>
+                        {{input class="form-control" value=model.userEmail required=true placeholder="example@example.com" aria-describedby="basic-addon2"}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="button foward">
-    <button {{action "foward"}} class="btn btn-success btn-lg"><span class="glyphicon glyphicon glyphicon-forward"></span> Avançar</button>
-</div>
+    <div class="button foward">
+        
+        <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon glyphicon-forward"></span> Avançar</button>
+        
+    </div>
+</form>
