@@ -1,0 +1,22 @@
+<form>
+    <div class="box abilities"> 
+        <div class="inf">
+            <span>Classifique suas habilidades entre 0 e 10 nas seguintes tecnologias: </span>
+        </div>
+        <div class="row ability">
+            <div class="col-md-12">
+                {{#each abilities as |ability|}}
+                    <div class="card {{ability.direction}}">
+                        <img src={{ability.source}}  alt={{ability.name}}><br/>
+                        {{input  type="number" min="0" max="10"}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="button foward">
+        <button {{action "save"}} type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar
+        </button>
+    </div>
+</form>

@@ -5,37 +5,40 @@ const abilities = [
         id:'html',
         name: 'HTML',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/html_5.png'
     },{
         id:'css',
         name: 'CSS',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/css_3.png'
     },{
         id:'js',
         name: 'Javascript',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/js.png'
     },{
         id:'python',
         name: 'Python',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/python.png',
+        direction: 'horizontal'
     },{
         id:'django',
         name: 'Django',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/django.png',
+        direction: 'horizontal'
     },{
         id:'ios',
         name: 'iOS',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/ios.png',
+        direction: 'horizontal'
     },{
         id:'android',
         name: 'Android',
         rate: defaultRate,
-        value: 0
+        source: '/assets/images/android.png'
     }
 ];
 

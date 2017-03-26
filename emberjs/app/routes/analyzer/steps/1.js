@@ -1,11 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    
+
+
     actions: {
 
-        restart() {
-            this.transitionTo('analyzer.steps.1');
+        start() {
+            
+            this.transitionTo('analyzer.steps.2');
+
         }
 
     }
