@@ -29,7 +29,7 @@ export default Ember.Route.extend({
                 }
 
                 record.set(ability.id, parseInt(ability.value) || null);
-                
+                ability.value = null;
             });
 
             if (errror) {
@@ -47,7 +47,7 @@ export default Ember.Route.extend({
                 
                 this.controller.set('model', this.controller.get('model'));
                 this.controller.set('abilities', abilities);
-                
+
                 this.transitionTo('analyzer.results');
                 this.controller.set('isProcessing', false);   
             }).catch(err => {
