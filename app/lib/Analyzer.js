@@ -34,7 +34,7 @@ class Analyzer {
     * @return {boolean}
     */
     isMobile() {
-        return this.result.ios >= 7 && this.result.android >= 7;
+        return this.result.ios >= 7 || this.result.android >= 7;
     }
     /**
     * Send Email to each hability found in the test

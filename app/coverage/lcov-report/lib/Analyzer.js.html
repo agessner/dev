@@ -110,7 +110,30 @@
 65
 66
 67
-68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -126,15 +149,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,6 +192,11 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,20 +237,38 @@ class Analyzer {
     constructor(result) {
         this.result = result;
     }
-    
+    /**
+    * Verify if the result is for a Front End developer
+    * @method isFrontEnd
+    * @return {boolean}
+    */
     isFrontEnd() {
         return this.result.html &gt;= 7 &amp;&amp; this.result.css &gt;= 7 &amp;&amp; this.result.js &gt;= 7;
     }
-&nbsp;
+    /**
+    * Verify if the result is for a Back End developer
+    * @method isFrontEnd
+    * @return {boolean}
+    */
     isBackEnd() {
         return this.result.python &gt;= 7 &amp;&amp; this.result.django &gt;= 7;
     }
-&nbsp;
+    /**
+    * Verify if the result is for a Mobile developer
+    * @method isFrontEnd
+    * @return {boolean}
+    */
     isMobile() {
-        return this.result.ios &gt;= 7 &amp;&amp; this.result.android &gt;= 7;
+        return this.result.ios &gt;= 7 || this.result.android &gt;= 7;
     }
-&nbsp;
-    sendEmail(habilities, callback) {
+    /**
+    * Send Email to each hability found in the test
+    * @method sendEmail
+    * @param  {Array}    abilities abilities found in the test
+    * @param  {Function} callback  callback returning when the method is done
+    * @return {Function} callback
+    */
+    sendEmail(abilities, callback) {
         
         const mailer = new Mailer(config.email.sender, this.result.userEmail, `Obrigado por se candidatar ${this.result.userName}!`);
 &nbsp;
@@ -214,7 +278,7 @@ class Analyzer {
 <span class="cstat-no" title="statement not covered" >                return callback(err);</span>
             }
             
-            return async.each(habilities, (hability, eachCallback) =&gt; {
+            return async.each(abilities, (hability, eachCallback) =&gt; {
                 return mailer.send(html, hability, eachCallback);
             }, err =&gt; {
                 return callback(err, this.result);
@@ -222,7 +286,12 @@ class Analyzer {
             
         });
     }
-&nbsp;
+     /**
+    * Analyze the test sent by the taker
+    * @method test
+    * @param  {Function} callback  callback returning when the method is done
+    * @return {Function} callback
+    */
     test(callback) {
 &nbsp;
         let habilities = [];
@@ -250,7 +319,7 @@ module.exports = Analyzer;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 26 2017 20:09:57 GMT-0300 (BRT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 26 2017 23:03:16 GMT-0300 (BRT)
 </div>
 </div>
 <script src="../prettify.js"></script>
