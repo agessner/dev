@@ -30,11 +30,25 @@ class Mailer {
         };
 
     }
-
+    /**
+    * Read an email template
+    * @method readTemplate
+    * @param  {String}   path      abilities found in the test
+    * @param  {Function} callback  callback returning when the method is done
+    * @return {Function} callback
+    */
     readTemplate(path, callback) {
         return fs.readFile(`${__dirname}/../emailTemplates/${path}.html`, callback);
     }
 
+    /**
+    * Send an email
+    * @method send
+    * @param  {String}   emailTemplate templated loaded from readTemplate
+    * @param  {Object}   result        result from the analyses
+    * @param  {Function} callback  callback returning when the method is done
+    * @return {Function} callback
+    */
     send(emailTemplate, result, callback) {
 
         let template = Handlebars.compile(emailTemplate.toString());

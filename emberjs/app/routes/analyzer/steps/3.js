@@ -21,6 +21,7 @@ export default Ember.Route.extend({
 
             this.controller.get('abilities').forEach(ability => {
 
+                //Prevent the user for typing values that are not between 0 and 10
                 if (parseInt(ability.value) && (
                     parseInt(ability.value) > 10 || parseInt(ability.value) < 0)) {
                     errror=true;
@@ -45,7 +46,8 @@ export default Ember.Route.extend({
             }).then(() => {
                 
                 this.controller.set('model', this.controller.get('model'));
-
+                this.controller.set('abilities', abilities);
+                
                 this.transitionTo('analyzer.results');
                 this.controller.set('isProcessing', false);   
             }).catch(err => {
